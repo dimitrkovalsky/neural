@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.function.Function;
 
 import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -15,12 +16,21 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Neuron {
 
+  private long id;
+  private int layerId;
+
   private static final double CORRECTION_COEFFICIENT = 0.01;
   private List<Double> inputs;
   @Getter
   private List<Double> weights;
+  @Setter
   private Function<Double, Double> activationFunction;
   private int inputAmount;
+
+  public Neuron(long id, int layerId) {
+    this.id = id;
+    this.layerId = layerId;
+  }
 
   public Neuron(int inputAmount, Function<Double, Double> activationFunction) {
     inputs = new ArrayList<>(inputAmount);
