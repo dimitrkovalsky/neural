@@ -1,7 +1,7 @@
 package percep;
 
 
-import com.liberty.neuro.ActivationFunctions;
+import com.liberty.neuro.common.ActivationFunctions;
 
 public class MLP {
 

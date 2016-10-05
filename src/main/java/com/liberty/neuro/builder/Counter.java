@@ -11,9 +11,14 @@ public class Counter {
 
   private static AtomicLong neuronCounter = new AtomicLong(0);
   private static AtomicInteger neuronLayerCounter = new AtomicInteger(0);
+  private static AtomicLong connectionCounter = new AtomicLong(0);
 
   public static long getNextNeuronId() {
     return neuronCounter.incrementAndGet();
+  }
+
+  public static long getConnectionId() {
+    return connectionCounter.incrementAndGet();
   }
 
   public static int getNextLayerId() {

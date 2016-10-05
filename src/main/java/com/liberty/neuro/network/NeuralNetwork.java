@@ -1,4 +1,6 @@
-package com.liberty.neuro;
+package com.liberty.neuro.network;
+
+import com.liberty.neuro.common.TrainingPattern;
 
 import java.util.List;
 

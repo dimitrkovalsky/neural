@@ -1,12 +1,13 @@
-package com.liberty.neuro;
+package com.liberty.neuro.neuron;
+
+import com.liberty.neuro.common.TrainingPattern;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -14,18 +15,18 @@ import lombok.extern.slf4j.Slf4j;
  * @since 29.09.2016.
  */
 @Slf4j
-public class Neuron {
+@Data
+public class Neuron implements AbstractNeuron {
 
-  private long id;
-  private int layerId;
+  private Long id;
+  private Integer layerId;
 
   private static final double CORRECTION_COEFFICIENT = 0.01;
   private List<Double> inputs;
-  @Getter
   private List<Double> weights;
-  @Setter
   private Function<Double, Double> activationFunction;
   private int inputAmount;
+  private double output;
 
   public Neuron(long id, int layerId) {
     this.id = id;
@@ -96,10 +97,16 @@ public class Neuron {
       out += inputs.get(i) * weights.get(i);
     }
     out = activation(out);
+    this.output = out;
     return out;
   }
 
   private double activation(double out) {
     return activationFunction.apply(out);
+  }
+
+  @Override
+  public NeuronType getNeuronType() {
+    return NeuronType.NEURON;
   }
 }

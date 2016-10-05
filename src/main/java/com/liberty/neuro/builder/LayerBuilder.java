@@ -1,6 +1,6 @@
 package com.liberty.neuro.builder;
 
-import com.liberty.neuro.NeuronLayer;
+import com.liberty.neuro.layer.NeuronLayer;
 
 /**
  * @author Dmytro_Kovalskyi.

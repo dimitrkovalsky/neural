@@ -1,4 +1,4 @@
-package com.liberty.neuro;
+package com.liberty.neuro.common;
 
 import java.util.List;
 

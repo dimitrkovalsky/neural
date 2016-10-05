@@ -1,6 +1,6 @@
-import com.liberty.neuro.ActivationFunctions;
-import com.liberty.neuro.Neuron;
-import com.liberty.neuro.NeuronTrainer;
+import com.liberty.neuro.common.ActivationFunctions;
+import com.liberty.neuro.neuron.Neuron;
+import com.liberty.neuro.common.NeuronTrainer;
 
 public class Runner {
 

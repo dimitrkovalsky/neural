@@ -1,4 +1,6 @@
-package com.liberty.neuro;
+package com.liberty.neuro.common;
+
+import com.liberty.neuro.neuron.Neuron;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;

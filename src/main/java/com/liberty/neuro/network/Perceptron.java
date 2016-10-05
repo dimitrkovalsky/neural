@@ -1,4 +1,4 @@
-package com.liberty.neuro;
+package com.liberty.neuro.network;
 
 import java.util.Arrays;
 

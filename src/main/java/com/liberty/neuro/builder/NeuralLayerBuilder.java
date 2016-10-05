@@ -1,7 +1,7 @@
 package com.liberty.neuro.builder;
 
-import com.liberty.neuro.Neuron;
-import com.liberty.neuro.NeuronLayer;
+import com.liberty.neuro.neuron.Neuron;
+import com.liberty.neuro.layer.NeuronLayer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,31 +14,35 @@ import java.util.stream.IntStream;
  */
 public class NeuralLayerBuilder implements LayerBuilder {
 
-  private List<Neuron> neurons;
   private int neuronAmount;
   private Function<Double, Double> activationFunction;
 
 
   @Override
   public LayerBuilder setNeuronAmount(int neuronAmount) {
-    neurons = new ArrayList<>();
-    IntStream.range(0, neuronAmount).forEach(x -> neurons.add(createNeuron()));
+    this.neuronAmount = neuronAmount;
     return this;
   }
 
   public LayerBuilder setActivationFunction(Function<Double, Double> activationFunction) {
     this.activationFunction = activationFunction;
-    neurons.forEach(x -> x.setActivationFunction(activationFunction));
     return this;
   }
 
-  private Neuron createNeuron() {
-    return new Neuron(Counter.getNextNeuronId(), Counter.getNextLayerId());
+  private Neuron createNeuron(int layerId) {
+    Neuron neuron = new Neuron(Counter.getNextNeuronId(), layerId);
+    neuron.setActivationFunction(activationFunction);
+    return neuron;
   }
-
 
   @Override
   public NeuronLayer build() {
-    return null;
+    int layerId = Counter.getNextLayerId();
+    List<Neuron> neurons = new ArrayList<>(neuronAmount);
+    IntStream.range(0, neuronAmount).forEach(x -> neurons.add(createNeuron(layerId)));
+    NeuronLayer layer = new NeuronLayer();
+    layer.setId(layerId);
+    layer.setNeurons(neurons);
+    return layer;
   }
 }
